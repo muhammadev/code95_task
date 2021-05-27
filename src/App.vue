@@ -1,28 +1,51 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <top-bar />
+    <nav-bar />
+    <keep-alive>
+      <component :is="currentStep" v-on:step="switchStep"></component>
+    </keep-alive>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import TopBar from "./components/TopBar";
+import NavBar from "./components/NavBar";
+import StepOne from "./components/StepOne.vue";
+import StepTwo from "./components/StepTwo.vue";
 
 export default {
   name: "App",
+  data() {
+    return {
+      currentStep: StepOne,
+    };
+  },
+  methods: {
+    switchStep: function(event) {
+      console.log("switching now..", event)
+      this.currentStep = event === 0 ? StepOne : StepTwo;
+    }
+  },
   components: {
-    HelloWorld,
+    TopBar,
+    NavBar,
+    StepOne,
+    StepTwo,
   },
 };
 </script>
 
 <style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
