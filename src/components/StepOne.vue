@@ -9,7 +9,7 @@
             >اسم المنظمة <b-icon-dot class="text-danger"></b-icon-dot
           ></label>
           <div class="input-group">
-            <b-form-input placeholder="Enter your name"></b-form-input>
+            <b-form-input></b-form-input>
           </div>
         </div>
 
@@ -18,7 +18,7 @@
             >نشاط المنظمة <b-icon-dot class="text-danger"></b-icon-dot
           ></label>
           <div class="input-group">
-            <b-form-input placeholder="Enter your name"></b-form-input>
+            <b-form-input></b-form-input>
           </div>
         </div>
       </div>
@@ -27,14 +27,14 @@
         <div class="col-md">
           <label for="">المنطقة</label>
           <div class="input-group">
-            <b-form-input placeholder="Enter your name"></b-form-input>
+            <b-form-input></b-form-input>
           </div>
         </div>
 
         <div class="col-md">
           <label for="">المركز/المحافظة</label>
           <div class="input-group">
-            <b-form-input placeholder="Enter your name"></b-form-input>
+            <b-form-input></b-form-input>
           </div>
         </div>
       </div>
@@ -111,7 +111,7 @@ export default {
     height: 10px;
     margin: 0 3px;
     border-radius: 50%;
-    background: #666;
+    background: #999;
     cursor: pointer;
     &.current {
       background: #0d6efd !important;

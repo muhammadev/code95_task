@@ -169,7 +169,7 @@ li {
     height: 10px;
     margin: 0 3px;
     border-radius: 50%;
-    background: #666;
+    background: #999;
     cursor: pointer;
     &.current {
       background: #0d6efd !important;
