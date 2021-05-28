@@ -1,7 +1,7 @@
 <template>
   <div class="container text-center">
-    <form action="" class="px-5 m-5">
-      <h5 class="mb-5 text-primary">بيانات المسؤولين</h5>
+    <form action="" class="px-5 m-5 mb-0">
+      <h5 class="form_title mb-5">بيانات المسؤولين</h5>
       <div class="row text-end">
         <div class="col-md">
           <label for=""
@@ -100,11 +100,11 @@
         </div>
       </div>
 
-      <button class="next-btn btn btn-primary my-5">طلب المنتج</button>
+      <button class="next-btn btn my-3">طلب المنتج</button>
     </form>
     <div class="carousel mb-5">
-      <div class="dot current" v-on:click="switchStep(1)"></div>
       <div class="dot" v-on:click="switchStep(0)"></div>
+      <div class="dot current" v-on:click="switchStep(1)"></div>
     </div>
   </div>
 </template>
@@ -136,6 +136,15 @@ export default {
 </script>
 
 <style lang="scss">
+.form_title {
+  color: #65bde1;
+}
+
+label {
+  color: #666;
+  margin-bottom: 10px;
+}
+
 li {
   list-style: none !important;
 }
@@ -143,6 +152,8 @@ li {
 .next-btn {
   display: inline-block !important;
   width: 70%;
+  background: #65bde1 !important;
+  color: #fff !important;
 }
 
 .multiselect {
@@ -150,14 +161,24 @@ li {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   cursor: pointer;
-  ul.multiselect__content {
-    list-style: none !important;
-    padding: 0 10px;
 
-    li:hover {
-      background: #e7e7e7;
-      border-radius: 0.25rem;
-      text-align: center;
+  .multiselect__content-wrapper {
+    position: relative !important;
+
+    ul.multiselect__content {
+      position: absolute !important;
+      z-index: 1000 !important;
+      background: #fff !important;
+      box-shadow: 1px 1px 5px 1px #ced4da;
+      border: 1px solid #ced4da;
+      list-style: none !important;
+      padding: 0 10px;
+
+      li:hover {
+        background: #e7e7e7;
+        border-radius: 0.25rem;
+        text-align: center;
+      }
     }
   }
 }
@@ -172,7 +193,7 @@ li {
     background: #999;
     cursor: pointer;
     &.current {
-      background: #0d6efd !important;
+      background: #65bde1 !important;
     }
   }
 }

@@ -27,7 +27,7 @@ export default {
     align-items: center;
     color: #fff;
     > * {
-      margin: 0 10px;
+      margin-right: 20px;
     }
     .languages {
       background: transparent;

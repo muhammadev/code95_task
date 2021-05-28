@@ -1,8 +1,8 @@
 <template>
   <div class="container text-center mt-5">
-    <h1>نموذج طلب المنتج "هندسة الموسم"</h1>
+    <h1 class="text-dark">نموذج طلب المنتج "هندسة الموسم"</h1>
     <form action="#" class="px-5 mt-5 mx-md-5">
-      <h5 class="mb-5 text-primary">بيانات المنظمة</h5>
+      <h5 class="form_title mb-5">بيانات المنظمة</h5>
       <div class="row text-end">
         <div class="col-md">
           <label for=""
@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-      <h5 class="text-primary">الباقة المطلوبة</h5>
+      <h5 class="form_title">الباقة المطلوبة</h5>
       <div class="row text-end">
         <div class="col-md-6">
           <label for=""
@@ -53,13 +53,13 @@
           </div>
         </div>
       </div>
-      <button class="next-btn btn btn-primary my-3" v-on:click="next">
+      <button class="next-btn btn my-3" v-on:click="next">
         التالي
       </button>
     </form>
     <div class="carousel mb-5">
-      <div class="dot" v-on:click="switchStep(1)"></div>
       <div class="dot current" v-on:click="switchStep(0)"></div>
+      <div class="dot" v-on:click="switchStep(1)"></div>
     </div>
   </div>
 </template>
@@ -91,6 +91,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.form_title {
+  color: #65bde1;
+}
+
+label {
+  color: #666;
+  margin-bottom: 10px;
+}
+
 .custom-select{
   width: 100%;
   background: #fff;
@@ -102,6 +111,8 @@ export default {
 .next-btn {
   display: inline-block !important;
   width: 70%;
+  background: #65bde1;
+  color: #fff;
 }
 
 .carousel {
@@ -114,7 +125,7 @@ export default {
     background: #999;
     cursor: pointer;
     &.current {
-      background: #0d6efd !important;
+      background: #65bde1 !important;
     }
   }
 }

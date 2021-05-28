@@ -37,13 +37,18 @@ export default {
 </script>
 
 <style lang="scss">
+@font-face {
+  font-family: DINNextMeduim;
+  src: url("./assets/DINNextLTArabic-Medium-2.ttf");
+}
+
 * {
   margin: 0;
   padding: 0;
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: DINNextMeduim, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
