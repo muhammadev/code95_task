@@ -2,7 +2,7 @@
   <header>
     <b-navbar toggleable="lg">
       <b-navbar-brand href="#"
-        ><img src="@/assets/logo-removebg-preview.png" alt=""
+        ><img src="@/assets/logo.png" alt="logo"
       /></b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -22,7 +22,7 @@
         <b-navbar-nav class="side-nav-btns">
           <button class="search-icon"><b-icon-search></b-icon-search></button>
           <button class="side-logo">
-            <img src="@/assets/logo-removebg-preview.png" alt="" />
+            <img src="@/assets/side_logo.png" alt="side logo" />
           </button>
           <button class="register-btn">تسجيل الدخول</button>
         </b-navbar-nav>

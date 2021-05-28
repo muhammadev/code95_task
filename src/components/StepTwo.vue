@@ -1,31 +1,31 @@
 <template>
   <div class="container text-center">
-    <form action="" class="px-5 m-5 mb-0">
+    <form action="" class="px-5 mt-5 mx-md-5">
       <h5 class="form_title mb-5">بيانات المسؤولين</h5>
       <div class="row text-end">
         <div class="col-md">
-          <label for=""
-            >اسم المسؤول <b-icon-dot class="text-danger"></b-icon-dot
-          ></label>
+          <label class="form_label" for="person_name"
+            >اسم المسؤول <span class="text-danger">&ast;</span></label
+          >
           <div class="input-group">
-            <b-form-input></b-form-input>
+            <b-form-input id="person_name" required></b-form-input>
           </div>
         </div>
 
         <div class="col-md">
-          <label for=""
-            >منصبه <b-icon-dot class="text-danger"></b-icon-dot
-          ></label>
+          <label class="form_label" for="person_position"
+            >منصبه <span class="text-danger">&ast;</span></label
+          >
           <div class="input-group">
-            <b-form-input></b-form-input>
+            <b-form-input id="person_position" required></b-form-input>
           </div>
         </div>
       </div>
 
       <div class="row my-5 text-end">
         <div class="col-md-6 row p-0 m-0">
-          <label for="">رقم الجوال</label>
-          <div class="col-md-2">
+          <label class="form_label" for="tel_number">رقم الجوال</label>
+          <div class="col-md-auto">
             <div class="input-group custom-multiselect">
               <multiselect
                 v-model="first_selected_code"
@@ -34,9 +34,9 @@
               ></multiselect>
             </div>
           </div>
-          <div class="col-md-10">
+          <div class="col-md">
             <div class="input-group">
-              <b-form-input type="tel"></b-form-input>
+              <b-form-input id="tel_number" type="tel"></b-form-input>
             </div>
           </div>
         </div>
@@ -44,28 +44,30 @@
 
       <div class="row my-5 text-end">
         <div class="col-md">
-          <label for=""
-            >اسم المفوض بالتواصل <b-icon-dot class="text-danger"></b-icon-dot
-          ></label>
+          <label class="form_label" for="comunicator_name"
+            >اسم المفوض بالتواصل <span class="text-danger">&ast;</span></label
+          >
           <div class="input-group">
-            <b-form-input></b-form-input>
+            <b-form-input id="comunicator_name" required></b-form-input>
           </div>
         </div>
 
         <div class="col-md">
-          <label for=""
-            >منصبه <b-icon-dot class="text-danger"></b-icon-dot
-          ></label>
+          <label class="form_label" for="comunicator_position"
+            >منصبه <span class="text-danger">&ast;</span></label
+          >
           <div class="input-group">
-            <b-form-input></b-form-input>
+            <b-form-input id="comunicator_position" required></b-form-input>
           </div>
         </div>
       </div>
 
       <div class="row my-5 text-end">
         <div class="col-md-6 row p-0 m-0">
-          <label for="">رقم الجوال</label>
-          <div class="col-2">
+          <label class="form_label" for="comunicator_tel_number"
+            >رقم الجوال</label
+          >
+          <div class="col-md-auto">
             <div class="input-group custom-multiselect">
               <multiselect
                 v-model="second_selected_code"
@@ -74,28 +76,31 @@
               ></multiselect>
             </div>
           </div>
-          <div class="col-md-10">
+          <div class="col-md">
             <div class="input-group">
-              <b-form-input type="tel"></b-form-input>
+              <b-form-input
+                id="comunicator_tel_number"
+                type="tel"
+              ></b-form-input>
             </div>
           </div>
         </div>
 
         <div class="col-md-6">
-          <label for=""
-            >البريد الإلكتروني <b-icon-dot class="text-danger"></b-icon-dot
-          ></label>
+          <label class="form_label" for="email"
+            >البريد الإلكتروني <span class="text-danger">&ast;</span></label
+          >
           <div class="input-group">
-            <b-form-input type="email"></b-form-input>
+            <b-form-input id="email" type="email" required></b-form-input>
           </div>
         </div>
       </div>
 
       <div class="row text-end">
         <div class="col-md">
-          <label for="">ملاحظات</label>
+          <label class="form_label" for="notes">ملاحظات</label>
           <div class="input-group">
-            <b-form-textarea></b-form-textarea>
+            <b-form-textarea id="notes"></b-form-textarea>
           </div>
         </div>
       </div>
@@ -119,9 +124,9 @@ export default {
   },
   data() {
     return {
-      first_selected_code: "93",
-      second_selected_code: "213",
-      options: ["93", "358", "355", "213", "1684", "376", "244"],
+      first_selected_code: "+93",
+      second_selected_code: "+213",
+      options: ["+93", "+358", "+355", "+213", "+376", "+244"],
     };
   },
   methods: {
@@ -135,18 +140,15 @@ export default {
 };
 </script>
 
+// scoped styling not used for styling elements created on render
 <style lang="scss">
 .form_title {
   color: #65bde1;
 }
 
-label {
+label.form_label {
   color: #666;
   margin-bottom: 10px;
-}
-
-li {
-  list-style: none !important;
 }
 
 .next-btn {
@@ -157,7 +159,7 @@ li {
 }
 
 .multiselect {
-  padding: 0 10px;
+  padding: 0 5px;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   cursor: pointer;
@@ -172,12 +174,21 @@ li {
       box-shadow: 1px 1px 5px 1px #ced4da;
       border: 1px solid #ced4da;
       list-style: none !important;
-      padding: 0 10px;
+      padding: 5px 10px;
 
-      li:hover {
-        background: #e7e7e7;
-        border-radius: 0.25rem;
-        text-align: center;
+      li {
+        list-style: none !important;
+
+        span {
+          padding: 2px;
+          margin: 2px;
+          border-radius: 0.25rem;
+          text-align: center;
+          transition: 0.1s;
+          &:hover {
+            background: #e7e7e7;
+          }
+        }
       }
     }
   }

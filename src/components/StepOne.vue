@@ -1,59 +1,60 @@
 <template>
   <div class="container text-center mt-5">
     <h1 class="text-dark">نموذج طلب المنتج "هندسة الموسم"</h1>
-    <form action="#" class="px-5 mt-5 mx-md-5">
+    <form action="#" class="step_one_form px-5 mt-5 mx-md-5">
       <h5 class="form_title mb-5">بيانات المنظمة</h5>
       <div class="row text-end">
         <div class="col-md">
-          <label for=""
-            >اسم المنظمة <b-icon-dot class="text-danger"></b-icon-dot
-          ></label>
+          <label class="form_label" for="organization_name"
+            >اسم المنظمة <span class="text-danger">&ast;</span></label
+          >
           <div class="input-group">
-            <b-form-input></b-form-input>
+            <b-form-input id="organization_name" required></b-form-input>
           </div>
         </div>
 
         <div class="col-md">
-          <label for=""
-            >نشاط المنظمة <b-icon-dot class="text-danger"></b-icon-dot
-          ></label>
+          <label class="form_label" for="organization_work"
+            >نشاط المنظمة <span class="text-danger">&ast;</span></label
+          >
           <div class="input-group">
-            <b-form-input></b-form-input>
+            <b-form-input id="organization_work" required></b-form-input>
           </div>
         </div>
       </div>
 
       <div class="row my-5 text-end">
         <div class="col-md">
-          <label for="">المنطقة</label>
+          <label class="form_label" for="region">المنطقة</label>
           <div class="input-group">
-            <b-form-input></b-form-input>
+            <b-form-input id="region"></b-form-input>
           </div>
         </div>
 
         <div class="col-md">
-          <label for="">المركز/المحافظة</label>
+          <label class="form_label" for="state">المركز/المحافظة</label>
           <div class="input-group">
-            <b-form-input></b-form-input>
+            <b-form-input id="state"></b-form-input>
           </div>
         </div>
       </div>
       <h5 class="form_title">الباقة المطلوبة</h5>
       <div class="row text-end">
         <div class="col-md-6">
-          <label for=""
-            >اختر الباقة <b-icon-dot class="text-danger"></b-icon-dot
-          ></label>
+          <label class="form_label" for="quota"
+            >اختر الباقة <span class="text-danger">&ast;</span></label
+          >
           <div class="input-group">
             <b-form-select
+              id="quota"
               class="custom-select"
-              v-model="selected"
               :options="options"
+              required
             ></b-form-select>
           </div>
         </div>
       </div>
-      <button class="next-btn btn my-3" v-on:click="next">
+      <button type="submit" class="next-btn btn my-3" v-on:click="next">
         التالي
       </button>
     </form>
@@ -80,11 +81,39 @@ export default {
   },
   methods: {
     next: function (e) {
+      // for "next" button, switches to the next step
       e.preventDefault();
-      this.$emit("step", 1);
+      this.checkRequiredFields(1);
     },
+
     switchStep: function (step) {
-      this.$emit("step", step);
+      // for carousel, switches to the given step variable
+      this.checkRequiredFields(step);
+    },
+
+    checkRequiredFields: function (step) {
+      let allInputs = Array.prototype.slice.call(
+        document.querySelectorAll("input[required]")
+      );
+      allInputs.push(document.querySelector("select[required]"));
+
+
+      let breakLoop = false;
+      allInputs.forEach((npt, i) => {
+        // if no empty fields found yet
+        if (!breakLoop) {
+          // if not falsy
+          if (npt.value) {
+            // submit if last element to check, else.. continue the loop
+            if (i === allInputs.length-1) {
+              this.$emit('step', step)
+            }
+          } else {
+            breakLoop = true;
+            npt.focus();
+          }
+        }
+      });
     },
   },
 };
@@ -100,7 +129,7 @@ label {
   margin-bottom: 10px;
 }
 
-.custom-select{
+.custom-select {
   width: 100%;
   background: #fff;
   padding: 7px;

@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     switchStep: function(event) {
-      console.log("switching now..", event)
+      // console.log("switching now..", event)
       this.currentStep = event === 0 ? StepOne : StepTwo;
     }
   },
