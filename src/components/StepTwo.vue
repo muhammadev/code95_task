@@ -25,16 +25,39 @@
       <div class="row my-5 text-end">
         <div class="col-md-6 row p-0 m-0">
           <label class="form_label" for="tel_number">رقم الجوال</label>
-          <div class="col-md-auto">
+          <div class="col-md-4 custom-multiselect-wrapper">
             <div class="input-group custom-multiselect">
               <multiselect
                 v-model="first_selected_code"
+                label="code"
+                track-by="code"
+                placeholder="اختر كود الدولة"
                 :options="options"
-                :searchable="false"
-              ></multiselect>
+                :show-labels="false"
+              >
+                <template slot="singleLabel" slot-scope="props"
+                  ><span style="font-size: 14px" class="option__title">{{
+                    props.option.code
+                  }}</span
+                  >&nbsp;<img
+                    class="option__image"
+                    :src="props.option.flag"
+                    alt="country's flag"
+                /></template>
+                <template slot="option" slot-scope="props">
+                  <div class="option__desc">
+                    <span class="option__title">{{ props.option.code }}</span>
+                  </div>
+                  <img
+                    class="option__image"
+                    :src="props.option.flag"
+                    alt="country's flag"
+                  />
+                </template>
+              </multiselect>
             </div>
           </div>
-          <div class="col-md">
+          <div class="col-md-8">
             <div class="input-group">
               <b-form-input id="tel_number" type="tel"></b-form-input>
             </div>
@@ -67,16 +90,39 @@
           <label class="form_label" for="comunicator_tel_number"
             >رقم الجوال</label
           >
-          <div class="col-md-auto">
+          <div class="col-md-4 custom-multiselect-wrapper">
             <div class="input-group custom-multiselect">
               <multiselect
                 v-model="second_selected_code"
+                label="code"
+                track-by="code"
+                placeholder="اختر كود الدولة"
                 :options="options"
-                :searchable="false"
-              ></multiselect>
+                :show-labels="false"
+              >
+                <template slot="singleLabel" slot-scope="props"
+                  ><span style="font-size: 14px" class="option__title">{{
+                    props.option.code
+                  }}</span
+                  >&nbsp;<img
+                    class="option__image"
+                    :src="props.option.flag"
+                    alt="country's flag"
+                /></template>
+                <template slot="option" slot-scope="props">
+                  <div class="option__desc">
+                    <span class="option__title">{{ props.option.code }}</span>
+                  </div>
+                  <img
+                    class="option__image"
+                    :src="props.option.flag"
+                    alt="country's flag"
+                  />
+                </template>
+              </multiselect>
             </div>
           </div>
-          <div class="col-md">
+          <div class="col-md-8">
             <div class="input-group">
               <b-form-input
                 id="comunicator_tel_number"
@@ -124,9 +170,23 @@ export default {
   },
   data() {
     return {
-      first_selected_code: "+93",
-      second_selected_code: "+213",
-      options: ["+93", "+358", "+355", "+213", "+376", "+244"],
+      first_selected_code: {
+        code: "+20",
+        flag: "https://restcountries.eu/data/egy.svg",
+      },
+      second_selected_code: {
+        code: "+20",
+        flag: "https://restcountries.eu/data/egy.svg",
+      },
+      options: [
+        { code: "+20", flag: "https://restcountries.eu/data/egy.svg" },
+        { code: "+966", flag: "https://restcountries.eu/data/sau.svg" },
+        { code: "+974", flag: "https://restcountries.eu/data/qat.svg" },
+        { code: "+973", flag: "https://restcountries.eu/data/bhr.svg" },
+        { code: "+965", flag: "https://restcountries.eu/data/kwt.svg" },
+        { code: "+212", flag: "https://restcountries.eu/data/mar.svg" },
+        { code: "+249", flag: "https://restcountries.eu/data/sdn.svg" },
+      ],
     };
   },
   methods: {
@@ -158,39 +218,75 @@ label.form_label {
   color: #fff !important;
 }
 
+.input-group.custom-multiselect {
+  width: 100%;
+  height: 100%;
+}
+
 .multiselect {
+  width: 100%;
+  height: 100%;
+  line-height: 2;
+  text-align: center;
   padding: 0 5px;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
-  cursor: pointer;
-
   .multiselect__content-wrapper {
     position: relative !important;
-
+    // width: 100px;
     ul.multiselect__content {
       position: absolute !important;
+      left: 5%;
+      width: 100%;
+      padding: 0;
       z-index: 1000 !important;
       background: #fff !important;
       box-shadow: 1px 1px 5px 1px #ced4da;
       border: 1px solid #ced4da;
+      border-radius: 5px;
       list-style: none !important;
-      padding: 5px 10px;
-
       li {
         list-style: none !important;
-
+        font-size: 14px;
+        margin: 10px 0;
         span {
-          padding: 2px;
-          margin: 2px;
+          width: 100% !important;
           border-radius: 0.25rem;
           text-align: center;
           transition: 0.1s;
-          &:hover {
-            background: #e7e7e7;
+          cursor: pointer;
+          // &:hover {
+          //   background: #e7e7e7;
+          // }
+
+          .option__desc {
+            display: inline;
           }
         }
       }
     }
+  }
+
+  .multiselect__single {
+    cursor: pointer;
+  }
+
+  .multiselect__input {
+    visibility: hidden;
+    outline: none;
+    border: none;
+  }
+
+  &.multiselect--active {
+    .multiselect__input {
+      visibility: visible;
+    }
+  }
+
+  .option__image {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
   }
 }
 
