@@ -8,6 +8,7 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
+        <!-- right nav links -->
         <b-navbar-nav class="mx-lg-2 mx-xl-5">
           <b-nav-item href="#">الصفحة الرئيسية</b-nav-item>
           <b-nav-item href="#">منتجاتنا</b-nav-item>
@@ -18,7 +19,7 @@
           <b-nav-item href="#">الأسئلة الشائعة</b-nav-item>
         </b-navbar-nav>
 
-        <!-- Right aligned nav items -->
+        <!-- left nav buttons -->
         <b-navbar-nav class="side-nav-btns">
           <button class="search-icon"><b-icon-search></b-icon-search></button>
           <button class="side-logo">
@@ -28,26 +29,6 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <!-- <b-navbar toggleable="xl" variant="white" class="">
-      <b-navbar-brand href="#" class="">
-        <img src="@/assets/logo-removebg-preview.png" alt="" />
-      </b-navbar-brand>
-
-      <b-navbar-toggle target="nav_collapse" class=""></b-navbar-toggle>
-
-      <b-collapse is-nav id="nav_collapse" class="row">
-        <b-navbar-nav class="col-xl-8 mx-lg-3 mx-xl-5">
-          <b-nav-item href="#">الصفحة الرئيسية</b-nav-item>
-          <b-nav-item href="#">منتجاتنا</b-nav-item>
-          <b-nav-item href="#">مقياس الاستدامة المالية</b-nav-item>
-          <b-nav-item href="#">حول المقياس</b-nav-item>
-          <b-nav-item href="#">من نحن</b-nav-item>
-          <b-nav-item href="#">تواصل معنا</b-nav-item>
-          <b-nav-item href="#">الأسئلة الشائعة</b-nav-item>
-        </b-navbar-nav>
-        <div class="col-xl-4 bg-primary">hello</div>
-      </b-collapse>
-    </b-navbar> -->
   </header>
 </template>
 
@@ -79,7 +60,10 @@ export default {
         outline: none;
         border-right: 1px solid #ced4da;
         &.search-icon {
-          color: #666 !important;
+          color: #818181 !important;
+          &:hover {
+            background: #ddd !important;
+          }
         }
         &.side-logo {
           padding: 0 10px !important;
@@ -87,6 +71,9 @@ export default {
         &.register-btn {
           color: #fff !important;
           background: #65bde1 !important;
+          &:hover {
+            background: #3eadda !important;
+          }
         }
       }
     }

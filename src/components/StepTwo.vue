@@ -205,7 +205,7 @@ export default {
 }
 
 label.form_label {
-  color: #666;
+  color: #818181 !important;
   margin-bottom: 10px;
 }
 
@@ -214,6 +214,9 @@ label.form_label {
   width: 70%;
   background: #65bde1 !important;
   color: #fff !important;
+  &:hover {
+    background: #3eadda !important;
+  }
 }
 
 .input-group.custom-multiselect {
@@ -237,7 +240,7 @@ label.form_label {
   .multiselect__single {
     cursor: pointer;
     .option__image {
-      width: 20px;
+      width: 25px;
       object-fit: contain;
     }
   }

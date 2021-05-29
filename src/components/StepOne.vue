@@ -125,7 +125,7 @@ export default {
 }
 
 label {
-  color: #666;
+  color: #818181 !important;
   margin-bottom: 10px;
 }
 
@@ -142,6 +142,9 @@ label {
   width: 70%;
   background: #65bde1;
   color: #fff;
+  &:hover {
+    background: #3eadda !important;
+  }
 }
 
 .carousel {
