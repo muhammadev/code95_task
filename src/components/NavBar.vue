@@ -103,7 +103,13 @@ export default {
       font-size: 16px !important;
     }
     .side-nav-btns {
-      display: none !important;
+      button {
+        border-right: none !important;
+        margin: 10px 0;
+        &.register-btn {
+          padding: 10px;
+        }
+      }
     }
   }
 }

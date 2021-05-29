@@ -36,9 +36,7 @@
                 :show-labels="false"
               >
                 <template slot="singleLabel" slot-scope="props"
-                  ><span style="font-size: 14px" class="option__title">{{
-                    props.option.code
-                  }}</span
+                  ><span class="option__title">{{ props.option.code }}</span
                   >&nbsp;<img
                     class="option__image"
                     :src="props.option.flag"
@@ -48,6 +46,7 @@
                   <div class="option__desc">
                     <span class="option__title">{{ props.option.code }}</span>
                   </div>
+                  &nbsp;
                   <img
                     class="option__image"
                     :src="props.option.flag"
@@ -101,9 +100,7 @@
                 :show-labels="false"
               >
                 <template slot="singleLabel" slot-scope="props"
-                  ><span style="font-size: 14px" class="option__title">{{
-                    props.option.code
-                  }}</span
+                  ><span class="option__title">{{ props.option.code }}</span
                   >&nbsp;<img
                     class="option__image"
                     :src="props.option.flag"
@@ -113,6 +110,7 @@
                   <div class="option__desc">
                     <span class="option__title">{{ props.option.code }}</span>
                   </div>
+                  &nbsp;
                   <img
                     class="option__image"
                     :src="props.option.flag"
@@ -231,6 +229,19 @@ label.form_label {
   padding: 0 5px;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
+  .multiselect__input {
+    outline: none;
+    border: none;
+  }
+
+  .multiselect__single {
+    cursor: pointer;
+    .option__image {
+      width: 20px;
+      object-fit: contain;
+    }
+  }
+
   .multiselect__content-wrapper {
     position: relative !important;
     // width: 100px;
@@ -238,6 +249,9 @@ label.form_label {
       position: absolute !important;
       left: 5%;
       width: 100%;
+      max-width: 200px;
+      max-height: 250px;
+      overflow: auto;
       padding: 0;
       z-index: 1000 !important;
       background: #fff !important;
@@ -247,46 +261,36 @@ label.form_label {
       list-style: none !important;
       li {
         list-style: none !important;
-        font-size: 14px;
         margin: 10px 0;
         span {
+          display: inline-block;
           width: 100% !important;
           border-radius: 0.25rem;
           text-align: center;
-          transition: 0.1s;
           cursor: pointer;
-          // &:hover {
-          //   background: #e7e7e7;
-          // }
+          &.multiselect__option--selected {
+            background: #ced4da;
+          }
+          &.multiselect__option--highlight {
+            background: #65bde1 !important;
+            color: #fff !important;
+          }
+          &.multiselect__option--selected.multiselect__option--highlight {
+            background: #e86975 !important;
+            color: #fff !important;
+          }
+
+          .option__image {
+            width: 20px;
+            object-fit: contain;
+          }
 
           .option__desc {
-            display: inline;
+            display: inline-block;
           }
         }
       }
     }
-  }
-
-  .multiselect__single {
-    cursor: pointer;
-  }
-
-  .multiselect__input {
-    visibility: hidden;
-    outline: none;
-    border: none;
-  }
-
-  &.multiselect--active {
-    .multiselect__input {
-      visibility: visible;
-    }
-  }
-
-  .option__image {
-    width: 15px;
-    height: 15px;
-    object-fit: contain;
   }
 }
 
